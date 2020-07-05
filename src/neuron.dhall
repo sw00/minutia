@@ -5,5 +5,5 @@
 , theme =
     "black"
 , editUrl =
-    Some "https://github.com/sw00/minutiae/edit/master/notes/"
+    Some "https://github.com/sw00/minutiae/edit/master/src/"
 }
