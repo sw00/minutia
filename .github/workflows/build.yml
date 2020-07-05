@@ -18,7 +18,7 @@ jobs:
       - name: invoke neuron docker container
         run: |
           docker run --rm \
-                  -v $(pwd):/data \
+                  -v $(pwd)/src:/data \
                   -v $(pwd)/docs/:/output \
                   sw00/neuron-zk \
                   rib -o /output
