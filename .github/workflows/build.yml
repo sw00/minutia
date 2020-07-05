@@ -12,25 +12,25 @@ jobs:
   build:
     name: render the html
     runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-    - name: invoke neuron docker container
-      run: |
-        docker run -it --rm \
-                -v $(pwd):/data \
-                -v $(pwd)/docs/:/output \
-                sw00/neuron-zk \
-                rib -o /output
+      - name: invoke neuron docker container
+        run: |
+          docker run -it --rm \
+                  -v $(pwd):/data \
+                  -v $(pwd)/docs/:/output \
+                  sw00/neuron-zk \
+                  rib -o /output
 
-    - name: commit the rendered files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m "Publish changes" -a
+      - name: commit the rendered files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Publish changes" -a
 
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
